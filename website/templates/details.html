@@ -1,3 +1,30 @@
 {% extends "base.html" %}
 {% block title %} Details Page {% endblock %}
-{% block content %}This is the details page!{% endblock %}
+{% block content %}
+<h1 align="center">Employee Details</h1>
+<div id="details">
+{% for detail in details %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Full Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Job Title</th>
+      <th scope="col">Date Joined</th>
+    </tr>
+  </thead>
+  <tbody>
+<tr>
+  <td>{{detail.full_name}}</td>
+  <td>{{detail.email}}</td>
+  <td>{{detail.job_title}}</td>
+  <td>{{detail.date_joined}}</td>
+</tr>
+</tbody>
+</table>
+{% endfor %}
+</div>
+<form action="/logout" method="get">
+  <button name="logoutButton" type="submit" class="btn btn-primary">Logout</button>
+</form>
+{% endblock %}

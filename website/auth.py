@@ -1,7 +1,8 @@
 from flask import Blueprint,  render_template, request, flash,  redirect, url_for
 from werkzeug.security import generate_password_hash, check_password_hash
-from .models import User
+from .models import User, Details
 from flask_login import login_user, logout_user, login_required, current_user
+from . import db
 
 auth = Blueprint("auth", __name__)
 
@@ -23,3 +24,22 @@ def login():
             flash('Email does not exist.', category='error')
 
     return render_template("login.html")
+
+@auth.route("/post", methods=['GET','POST'])
+@login_required
+def create_post():
+    if request.method == 'POST':
+        full_name = request.form.get('full_name')
+        email = request.form.get('email')
+        job_title = request.form.get('job_title')
+        date_joined = request.form.get('date_joined')
+
+        if not full_name and email and job_title and date_joined:
+            flash('All details required to add new employee', category='error')
+        else:
+            detail = Details(full_name= full_name, email= email, job_title= job_title, date_joined = date_joined, author= current_user.id)
+            db.session.add(detail)
+            db.session.commit()
+            flash('Details added', category = 'success')    
+            return redirect(url_for('auth.login'))
+    return render_template('post.html', user=current_user)

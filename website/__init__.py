@@ -22,7 +22,7 @@ def create_app():
   app.register_blueprint(detailsPage, url_prefix="/")
   app.register_blueprint(signup, url_prefix="/")
 
-  from .models import User
+  from .models import User, Details
 
   def create_database(app):
     if not path.exists("website/" + DB_NAME):
