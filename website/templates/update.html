@@ -2,9 +2,11 @@
   %}
   <form method="POST">
     <h3 align="center"> 
-    Add details
+    Update
     </h3>
     <div class = "from-group">
+      <label for ="id">ID</label>
+      <input type ="text" id="id" name="id" class = "form-control" placeholder="Enter ID" required/>
       <label for ="full_name">Full Name</label>
       <input type ="text" id="full_name" name="full_name" class = "form-control" placeholder="Enter Full Name" required/>
       <label for ="email"> Email Address</label>
@@ -14,9 +16,20 @@
       <label for ="date_joined">Date Joined</label>
       <input type ="date_joined" id="date_joined" name="date_joined" class = "form-control" placeholder="Enter Date Joined" required/>
     </br>
+    
+    {% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
     <div align="center">
-      <button class = "btn btn-primary" type="submit">Submit</button>
+      <button class = "btn btn-primary" type="submit">Update details</button>
     </div>
+
     </div>
     </form>
   {% endblock %}

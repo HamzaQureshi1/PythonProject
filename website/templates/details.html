@@ -3,26 +3,30 @@
 {% block content %}
 <h1 align="center">Employee Details</h1>
 <div id="details">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Job Title</th>
+        <th scope="col">Date Joined</th>
+      </tr>
+    </thead>
 {% for detail in details %}
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Full Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Job Title</th>
-      <th scope="col">Date Joined</th>
-    </tr>
-  </thead>
+
   <tbody>
 <tr>
+  <td>{{detail.id}}</td>
   <td>{{detail.full_name}}</td>
   <td>{{detail.email}}</td>
   <td>{{detail.job_title}}</td>
   <td>{{detail.date_joined}}</td>
 </tr>
 </tbody>
-</table>
 {% endfor %}
+</table>
+
 </div>
 <form action="/logout" method="get">
   <button name="logoutButton" type="submit" class="btn btn-primary">Logout</button>

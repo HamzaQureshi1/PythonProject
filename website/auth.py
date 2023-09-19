@@ -41,5 +41,5 @@ def create_post():
             db.session.add(detail)
             db.session.commit()
             flash('Details added', category = 'success')    
-            return redirect(url_for('auth.login'))
+            return redirect(url_for('detailsPage.details'))
     return render_template('post.html', user=current_user)
