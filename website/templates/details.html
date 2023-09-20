@@ -31,4 +31,9 @@
 <form action="/logout" method="get">
   <button name="logoutButton" type="submit" class="btn btn-primary">Logout</button>
 </form>
+{% if user.admin == "1" %}
+<form action="/delete" method="get">
+  <button name="deleteButton" type="submit" class="btn btn-primary">Delete</button>
+</form>
+{% endif %}
 {% endblock %}

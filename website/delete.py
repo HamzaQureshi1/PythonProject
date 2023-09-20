@@ -15,6 +15,6 @@ def remove():
         if detail:
             db.session.delete(detail)
             db.session.commit()
-            return redirect(url_for('auth.login'))
+            return redirect(url_for('detailsPage.details'))
  
     return render_template('delete.html')

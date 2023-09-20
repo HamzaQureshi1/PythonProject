@@ -29,7 +29,7 @@ def create_new_user():  #this method cannot be the same name as signup because w
     elif len(password) < 6:
       flash('Password is too short', category ='error')  
     elif len(email) < 4:
-      flash('Email is invalid', category ='error')
+      flash('Email must be greater than 4 characters', category ='error')
     else:
       new_user = User(email=email, username=username, password =generate_password_hash(password, method='sha256') )    
       db.session.add(new_user)
