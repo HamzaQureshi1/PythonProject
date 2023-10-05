@@ -13,8 +13,8 @@ class User(db.Model, UserMixin):
 
 class Details(db.Model):
   id = db.Column(db.Integer, primary_key=True)
-  full_name = db.Column(db.String(150), unique=True)
-  email = db.Column(db.String(150), unique=True)
-  job_title = db.Column(db.String(150), unique=True)
-  date_joined = db.Column(db.String(150), unique = True)
+  full_name = db.Column(db.String(150))
+  email = db.Column(db.String(150))
+  job_title = db.Column(db.String(150))
+  date_joined = db.Column(db.String(150))
   author = db.Column(db.Integer, db.ForeignKey('user.id', ondelete = "CASCADE"), nullable = False)
