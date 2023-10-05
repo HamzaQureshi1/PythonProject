@@ -8,12 +8,8 @@ detailsPage = Blueprint("detailsPage", __name__)
 
 @detailsPage.route("/detailsPage")
 @login_required
+# This function pulls data from the details table in the database and passes if to the details html file where the content will be displayed.
 def details():
   details = Details.query.all()
   return render_template("details.html", user = current_user,details=details)
 
-@detailsPage.route("/logout")
-@login_required
-def logout():
-  logout_user()
-  return redirect(url_for("auth.login")) 

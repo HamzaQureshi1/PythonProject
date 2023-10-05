@@ -43,3 +43,9 @@ def create_post():
             flash('Details added', category = 'success')    
             return redirect(url_for('detailsPage.details'))
     return render_template('post.html', user=current_user)
+
+@auth.route("/logout")
+@login_required
+def logout():
+  logout_user()
+  return redirect(url_for("auth.login")) 
