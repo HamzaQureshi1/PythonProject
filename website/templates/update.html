@@ -17,15 +17,7 @@
       <input type ="date_joined" id="date_joined" name="date_joined" class = "form-control" placeholder="Enter Date Joined" required/>
     </br>
     
-    {% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class=flashes>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %}
+   
     <div align="center">
       <button class = "btn btn-primary" type="submit">Update details</button>
     </div>
